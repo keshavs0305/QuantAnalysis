@@ -21,15 +21,13 @@ for ticker in tickers:
     vix_data = vix_data.append(ticker_data, ignore_index=True)
 
 
-ret = {}
+ret = {'date': [], 'least_vol': [], 'most_vol': []}
 date_wise_data = vix_data.groupby('date')
 dates = vix_data.date.unique()
-i = 0
 for date in dates:
     date_data = date_wise_data.get_group(date)
     date_data['scaled_vix'] = StandardScaler(with_mean=False).fit_transform(date_data.VIX.to_numpy().reshape(-1, 1))
-    ret[i] = {}
-    ret[i]['least_volatile'] = date_data.sort_values('scaled_vix').head(10)
-    ret[i]['most_volatile'] = date_data.sort_values('scaled_vix', ascending=False).head(10)
-    i += 1
+    ret['date'].append(date)
+    ret['least_vol'].append(list(date_data.sort_values('scaled_vix').head(10).Name))
+    ret['most_vol'].append(list(date_data.sort_values('scaled_vix', ascending=False).head(10).Name))
 pd.DataFrame(ret).to_csv('analytic1.csv')
