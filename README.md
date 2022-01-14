@@ -10,7 +10,7 @@ Approach:
 Since data is already clean
 1. I used Realized Volatility (https://www.wallstreetmojo.com/realized-volatility/) as a measure to calculate requires Volatility Index. Here daily Realized Volatility is calculated by computing the aggregate of returns over the last 5 days(change of price over a week). So this was done by simply doing some aggregations on pandas data frame of given data and then calculating a daily vix index (daily variance sumed over a week period).
 2. To calculate the trade pairs, a regression was modelled between 2 stocks close price and an r2 score metric was used to define strength of relation. So top 5 r2 score pairs were calculated for each year.
-3. To make a binary classification predictions, LSTM model was created using the input data with 5 time steps backwards.
+3. To make a binary classification predictions, LSTM model was created using the input data with 5 time steps backwards as x-data (features) and 1 step forward as y-data (label) to avoid look ahead bias. 5 steps was choosen just to consider time effect for the past 1 week.
 
 Findings:
 1. A Realized Volatility index was calculated for each day, which informs about volatility over past 1 week (5 trading days). Based on this index, 10 most volatile and 10 least volatile stocks were found on daily basis. The output is saved in csv file named 'daily_vix_ranks.csv'.
@@ -25,7 +25,7 @@ Conclusion:
 analysis1.py will give you the Volatility stocks as asked in a csv file name 'daily_vix_ranks.csv'.
 analysis2.py will give you the best pairs for each year in a separate csv file named similar to 'top5_(year).csv'.
 analysis3.py will train the LSTM model for each stock and save the models into model folder.
-make_pred.py file will be used to make the predictions.
+make_pred.py file will be used to make the predictions. The test data should contain atleast 6 time step data and the latest time date will be predicted eliminating latest data into input to avoid look ahead bias.
 VIX and pairs are found as asked. LSTM models are saved and a script is ready for making predictions.
 
 Retrospective:
