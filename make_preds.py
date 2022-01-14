@@ -12,7 +12,7 @@ def make_pred():
     data = read_test_data()
     ticker = data.Name.unique()[0]
     scalar = pickle.load(open('models/scaler_'+ticker+'.pkl', 'rb'))
-    x = scalar.transform(data[['open', 'high', 'low', 'close', 'volume']])[-6:-1].reshape(1,5,5)
+    x = scalar.transform(data[['open', 'high', 'low', 'close', 'volume']])[-6:-1].reshape(1, 5, 5)
 
     pred = load_model('models/model_'+ticker+'.h5').predict(x)[0][0]
 
@@ -21,7 +21,9 @@ def make_pred():
     elif pred >= 0.6:
         return 1
     else:
-        return 1
+        return 0.5
 
 
-make_pred()
+x = make_pred()
+print(x)
+## this will ask input csv filename

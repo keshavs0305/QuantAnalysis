@@ -25,7 +25,7 @@ Conclusion:
 analysis1.py will give you the Volatility stocks as asked in a csv file name 'daily_vix_ranks.csv'.
 analysis2.py will give you the best pairs for each year in a separate csv file named similar to 'top5_(year).csv'.
 analysis3.py will train the LSTM model for each stock and save the models into model folder.
-make_pred.py file will be used to make the predictions. The test data should contain atleast 6 time step data and the latest time date will be predicted eliminating latest data into input to avoid look ahead bias.
+make_pred.py file will be used to make the predictions. The test data should contain atleast 6 time step data and the latest time date will be predicted eliminating latest data into input to avoid look ahead bias. At a time predictions are made only for one date.
 VIX and pairs are found as asked. LSTM models are saved and a script is ready for making predictions.
 
 Retrospective:

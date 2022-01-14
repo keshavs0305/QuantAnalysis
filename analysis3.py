@@ -31,9 +31,8 @@ def def_model():
 
 
 def train(x, y, model, ticker):
-    model.fit(x, y, epochs=200, verbose=0)
+    model.fit(x, y, epochs=200)
     model.save('models/model_' + ticker + '.h5')
-    #dump(model, open('models/model_' + ticker + '.pkl', 'wb'))
 
 
 def train_all():
