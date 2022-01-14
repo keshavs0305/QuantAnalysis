@@ -33,6 +33,6 @@ In the LSTM, a lot many number of features could be added with respect to techni
 
 
 How to run the predictions?
-The make_pred.py file is designed to take the test data as input in csv format. A filename (ex. 'testdata.csv') is to be given as input when make_pred.py is run. The test data is supposed to have Open, High, Low, Close and Volume columns in a time series manner. The predictions are made for the latest day in the data. And a 5 step data before the latest day is given to the LSTM model avoiding the look ahead bias.
+The make_pred.py file is designed to take the test data as input in csv format. A filename (ex. 'testdata.csv') is to be given as input when make_pred.py is run. The test data is supposed to have Open, High, Low, Close, Volume and ticker symbol columns in a time series manner (similar to data provided). The predictions are made for the latest day in the data. And a 5 step data before the latest day is given to the LSTM model avoiding the look ahead bias.
 
 note: Ignore all the .ipynb files
