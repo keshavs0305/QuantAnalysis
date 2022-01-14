@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
+import warnings
+warnings.filterwarnings("ignore")
 
 
 def read_data():
@@ -43,7 +45,7 @@ def rank_volatality():
         ret['date'].append(date)
         ret['least_vol'].append(list(date_data.sort_values('scaled_vix').head(10).Name))
         ret['most_vol'].append(list(date_data.sort_values('scaled_vix', ascending=False).head(10).Name))
-    pd.DataFrame(ret).to_csv('daily_vix_ranks.csv')
+    pd.DataFrame(ret).to_csv('daily_vix_ranks.csv', index=False)
 
 
 rank_volatality()

@@ -39,7 +39,7 @@ def find_top():
         year_wise_groups = year_wise_data(year)
         tickers = list(year_wise_groups.Name.unique().index)
         ret = cal_top(tickers, year_wise_groups)
-        pd.DataFrame(ret).sort_values('r2_score', ascending=False)[:5].to_csv('top5_' + year + '.csv')
+        pd.DataFrame(ret).sort_values('r2_score', ascending=False)[:5].to_csv('top5_' + year + '.csv', index=False)
 
 
 find_top()
